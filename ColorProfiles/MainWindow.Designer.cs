@@ -43,7 +43,7 @@
             this.yGreenTargetTextBox = new System.Windows.Forms.TextBox();
             this.yRedTargetTextBox = new System.Windows.Forms.TextBox();
             this.yWhiteTargetTextBox = new System.Windows.Forms.TextBox();
-            this.xBlueTextBox = new System.Windows.Forms.TextBox();
+            this.xBlueTargetTextBox = new System.Windows.Forms.TextBox();
             this.xGreenTargetTextBox = new System.Windows.Forms.TextBox();
             this.xRedTargetTextBox = new System.Windows.Forms.TextBox();
             this.xWhiteTargetTextBox = new System.Windows.Forms.TextBox();
@@ -61,13 +61,13 @@
             this.yLabel2 = new System.Windows.Forms.Label();
             this.xLabel2 = new System.Windows.Forms.Label();
             this.gammaSourceLabel = new System.Windows.Forms.Label();
-            this.profileSourceComboBox = new System.Windows.Forms.ComboBox();
-            this.targetProfileLabel = new System.Windows.Forms.Label();
+            this.profileTargetComboBox = new System.Windows.Forms.ComboBox();
             this.sourceProfileLabel = new System.Windows.Forms.Label();
-            this.profilesTargetComboBox = new System.Windows.Forms.ComboBox();
+            this.targetProfileLabel = new System.Windows.Forms.Label();
+            this.profileSourceComboBox = new System.Windows.Forms.ComboBox();
             this.gammaLabel = new System.Windows.Forms.Label();
+            this.gammaSourceTextBox = new System.Windows.Forms.TextBox();
             this.gammaTargetTextBox = new System.Windows.Forms.TextBox();
-            this.textBoxSourceGamma = new System.Windows.Forms.TextBox();
             this.xLabel = new System.Windows.Forms.Label();
             this.yLabel = new System.Windows.Forms.Label();
             this.whiteLabel = new System.Windows.Forms.Label();
@@ -229,7 +229,7 @@
             this.profileTableLayoutPanel.Controls.Add(this.yGreenTargetTextBox, 13, 3);
             this.profileTableLayoutPanel.Controls.Add(this.yRedTargetTextBox, 13, 2);
             this.profileTableLayoutPanel.Controls.Add(this.yWhiteTargetTextBox, 14, 1);
-            this.profileTableLayoutPanel.Controls.Add(this.xBlueTextBox, 13, 4);
+            this.profileTableLayoutPanel.Controls.Add(this.xBlueTargetTextBox, 13, 4);
             this.profileTableLayoutPanel.Controls.Add(this.xGreenTargetTextBox, 13, 3);
             this.profileTableLayoutPanel.Controls.Add(this.xRedTargetTextBox, 13, 2);
             this.profileTableLayoutPanel.Controls.Add(this.xWhiteTargetTextBox, 13, 1);
@@ -247,13 +247,13 @@
             this.profileTableLayoutPanel.Controls.Add(this.yLabel2, 14, 0);
             this.profileTableLayoutPanel.Controls.Add(this.xLabel2, 13, 0);
             this.profileTableLayoutPanel.Controls.Add(this.gammaSourceLabel, 8, 3);
-            this.profileTableLayoutPanel.Controls.Add(this.profileSourceComboBox, 8, 1);
-            this.profileTableLayoutPanel.Controls.Add(this.targetProfileLabel, 0, 0);
-            this.profileTableLayoutPanel.Controls.Add(this.sourceProfileLabel, 8, 0);
-            this.profileTableLayoutPanel.Controls.Add(this.profilesTargetComboBox, 0, 1);
+            this.profileTableLayoutPanel.Controls.Add(this.profileTargetComboBox, 8, 1);
+            this.profileTableLayoutPanel.Controls.Add(this.sourceProfileLabel, 0, 0);
+            this.profileTableLayoutPanel.Controls.Add(this.targetProfileLabel, 8, 0);
+            this.profileTableLayoutPanel.Controls.Add(this.profileSourceComboBox, 0, 1);
             this.profileTableLayoutPanel.Controls.Add(this.gammaLabel, 0, 3);
-            this.profileTableLayoutPanel.Controls.Add(this.gammaTargetTextBox, 1, 3);
-            this.profileTableLayoutPanel.Controls.Add(this.textBoxSourceGamma, 9, 3);
+            this.profileTableLayoutPanel.Controls.Add(this.gammaSourceTextBox, 1, 3);
+            this.profileTableLayoutPanel.Controls.Add(this.gammaTargetTextBox, 9, 3);
             this.profileTableLayoutPanel.Controls.Add(this.xLabel, 5, 0);
             this.profileTableLayoutPanel.Controls.Add(this.yLabel, 6, 0);
             this.profileTableLayoutPanel.Controls.Add(this.whiteLabel, 4, 1);
@@ -283,6 +283,7 @@
             this.yBlueTargetTextBox.Size = new System.Drawing.Size(30, 25);
             this.yBlueTargetTextBox.TabIndex = 19;
             this.yBlueTargetTextBox.TextChanged += new System.EventHandler(this.yBlueTargetTextBox_TextChanged);
+            this.yBlueTargetTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // yGreenTargetTextBox
             // 
@@ -293,6 +294,7 @@
             this.yGreenTargetTextBox.Size = new System.Drawing.Size(30, 25);
             this.yGreenTargetTextBox.TabIndex = 18;
             this.yGreenTargetTextBox.TextChanged += new System.EventHandler(this.yGreenTargetTextBox_TextChanged);
+            this.yGreenTargetTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // yRedTargetTextBox
             // 
@@ -303,6 +305,7 @@
             this.yRedTargetTextBox.Size = new System.Drawing.Size(30, 25);
             this.yRedTargetTextBox.TabIndex = 17;
             this.yRedTargetTextBox.TextChanged += new System.EventHandler(this.yRedTargetTextBox_TextChanged);
+            this.yRedTargetTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // yWhiteTargetTextBox
             // 
@@ -313,16 +316,18 @@
             this.yWhiteTargetTextBox.Size = new System.Drawing.Size(30, 25);
             this.yWhiteTargetTextBox.TabIndex = 16;
             this.yWhiteTargetTextBox.TextChanged += new System.EventHandler(this.yWhiteTargetTextBox_TextChanged);
+            this.yWhiteTargetTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
-            // xBlueTextBox
+            // xBlueTargetTextBox
             // 
-            this.xBlueTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xBlueTextBox.Location = new System.Drawing.Point(630, 55);
-            this.xBlueTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 30, 3);
-            this.xBlueTextBox.Name = "xBlueTextBox";
-            this.xBlueTextBox.Size = new System.Drawing.Size(30, 25);
-            this.xBlueTextBox.TabIndex = 15;
-            this.xBlueTextBox.TextChanged += new System.EventHandler(this.xBlueTextBox_TextChanged);
+            this.xBlueTargetTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xBlueTargetTextBox.Location = new System.Drawing.Point(630, 55);
+            this.xBlueTargetTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 30, 3);
+            this.xBlueTargetTextBox.Name = "xBlueTargetTextBox";
+            this.xBlueTargetTextBox.Size = new System.Drawing.Size(30, 25);
+            this.xBlueTargetTextBox.TabIndex = 15;
+            this.xBlueTargetTextBox.TextChanged += new System.EventHandler(this.xBlueTargetTextBox_TextChanged);
+            this.xBlueTargetTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // xGreenTargetTextBox
             // 
@@ -333,6 +338,7 @@
             this.xGreenTargetTextBox.Size = new System.Drawing.Size(30, 25);
             this.xGreenTargetTextBox.TabIndex = 14;
             this.xGreenTargetTextBox.TextChanged += new System.EventHandler(this.xGreenTargetTextBox_TextChanged);
+            this.xGreenTargetTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // xRedTargetTextBox
             // 
@@ -343,6 +349,7 @@
             this.xRedTargetTextBox.Size = new System.Drawing.Size(30, 25);
             this.xRedTargetTextBox.TabIndex = 13;
             this.xRedTargetTextBox.TextChanged += new System.EventHandler(this.xRedTargetTextBox_TextChanged);
+            this.xRedTargetTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // xWhiteTargetTextBox
             // 
@@ -353,6 +360,7 @@
             this.xWhiteTargetTextBox.Size = new System.Drawing.Size(30, 25);
             this.xWhiteTargetTextBox.TabIndex = 12;
             this.xWhiteTargetTextBox.TextChanged += new System.EventHandler(this.xWhiteTargetTextBox_TextChanged);
+            this.xWhiteTargetTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // yBlueSourceTextBox
             // 
@@ -363,6 +371,7 @@
             this.yBlueSourceTextBox.Size = new System.Drawing.Size(30, 25);
             this.yBlueSourceTextBox.TabIndex = 9;
             this.yBlueSourceTextBox.TextChanged += new System.EventHandler(this.yBlueSourceTextBox_TextChanged);
+            this.yBlueSourceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // yGreenSourceTextBox
             // 
@@ -373,6 +382,7 @@
             this.yGreenSourceTextBox.Size = new System.Drawing.Size(30, 25);
             this.yGreenSourceTextBox.TabIndex = 8;
             this.yGreenSourceTextBox.TextChanged += new System.EventHandler(this.yGreenSourceTextBox_TextChanged);
+            this.yGreenSourceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // xRedSourceTextBox
             // 
@@ -383,6 +393,7 @@
             this.xRedSourceTextBox.Size = new System.Drawing.Size(30, 25);
             this.xRedSourceTextBox.TabIndex = 3;
             this.xRedSourceTextBox.TextChanged += new System.EventHandler(this.xRedSourceTextBox_TextChanged);
+            this.xRedSourceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // yWhiteSourceTextBox
             // 
@@ -393,6 +404,7 @@
             this.yWhiteSourceTextBox.Size = new System.Drawing.Size(30, 25);
             this.yWhiteSourceTextBox.TabIndex = 6;
             this.yWhiteSourceTextBox.TextChanged += new System.EventHandler(this.yWhiteSourceTextBox_TextChanged);
+            this.yWhiteSourceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // yRedSourceTextBox
             // 
@@ -403,6 +415,7 @@
             this.yRedSourceTextBox.Size = new System.Drawing.Size(30, 25);
             this.yRedSourceTextBox.TabIndex = 7;
             this.yRedSourceTextBox.TextChanged += new System.EventHandler(this.yRedSourceTextBox_TextChanged);
+            this.yRedSourceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // xBlueSourceTextBox
             // 
@@ -413,6 +426,7 @@
             this.xBlueSourceTextBox.Size = new System.Drawing.Size(30, 25);
             this.xBlueSourceTextBox.TabIndex = 5;
             this.xBlueSourceTextBox.TextChanged += new System.EventHandler(this.xBlueSourceTextBox_TextChanged);
+            this.xBlueSourceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // xGreenSourceTextBox
             // 
@@ -423,6 +437,7 @@
             this.xGreenSourceTextBox.Size = new System.Drawing.Size(30, 25);
             this.xGreenSourceTextBox.TabIndex = 4;
             this.xGreenSourceTextBox.TextChanged += new System.EventHandler(this.xGreenSourceTextBox_TextChanged);
+            this.xGreenSourceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label2
             // 
@@ -502,54 +517,63 @@
             this.gammaSourceLabel.TabIndex = 6;
             this.gammaSourceLabel.Text = "Gamma:";
             // 
-            // profileSourceComboBox
+            // profileTargetComboBox
             // 
-            this.profileTableLayoutPanel.SetColumnSpan(this.profileSourceComboBox, 3);
-            this.profileSourceComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.profileSourceComboBox.FormattingEnabled = true;
-            this.profileSourceComboBox.Items.AddRange(new object[] {
-            "a",
-            "b",
-            "c"});
-            this.profileSourceComboBox.Location = new System.Drawing.Point(395, 16);
-            this.profileSourceComboBox.Name = "profileSourceComboBox";
-            this.profileSourceComboBox.Size = new System.Drawing.Size(135, 25);
-            this.profileSourceComboBox.TabIndex = 10;
-            // 
-            // targetProfileLabel
-            // 
-            this.targetProfileLabel.AutoSize = true;
-            this.profileTableLayoutPanel.SetColumnSpan(this.targetProfileLabel, 2);
-            this.targetProfileLabel.Location = new System.Drawing.Point(3, 0);
-            this.targetProfileLabel.Name = "targetProfileLabel";
-            this.targetProfileLabel.Size = new System.Drawing.Size(49, 13);
-            this.targetProfileLabel.TabIndex = 0;
-            this.targetProfileLabel.Text = "Target profile:";
+            this.profileTableLayoutPanel.SetColumnSpan(this.profileTargetComboBox, 3);
+            this.profileTargetComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.profileTargetComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.profileTargetComboBox.FormattingEnabled = true;
+            this.profileTargetComboBox.Items.AddRange(new object[] {
+            "sRGB",
+            "Adobe RGB",
+            "Apple RGB",
+            "CIE RGB",
+            "Wide Gamut",
+            "New"});
+            this.profileTargetComboBox.Location = new System.Drawing.Point(395, 16);
+            this.profileTargetComboBox.Name = "profileTargetComboBox";
+            this.profileTargetComboBox.Size = new System.Drawing.Size(135, 25);
+            this.profileTargetComboBox.TabIndex = 10;
+            this.profileTargetComboBox.SelectedIndexChanged += new System.EventHandler(this.profileTargetComboBox_SelectedIndexChanged);
             // 
             // sourceProfileLabel
             // 
             this.sourceProfileLabel.AutoSize = true;
             this.profileTableLayoutPanel.SetColumnSpan(this.sourceProfileLabel, 2);
-            this.sourceProfileLabel.Location = new System.Drawing.Point(395, 0);
+            this.sourceProfileLabel.Location = new System.Drawing.Point(3, 0);
             this.sourceProfileLabel.Name = "sourceProfileLabel";
-            this.sourceProfileLabel.Size = new System.Drawing.Size(49, 13);
-            this.sourceProfileLabel.TabIndex = 1;
-            this.sourceProfileLabel.Text = "Target profile:";
+            this.sourceProfileLabel.Size = new System.Drawing.Size(52, 13);
+            this.sourceProfileLabel.TabIndex = 0;
+            this.sourceProfileLabel.Text = "Source profile:";
             // 
-            // profilesTargetComboBox
+            // targetProfileLabel
             // 
-            this.profileTableLayoutPanel.SetColumnSpan(this.profilesTargetComboBox, 3);
-            this.profilesTargetComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.profilesTargetComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.profilesTargetComboBox.FormattingEnabled = true;
-            this.profilesTargetComboBox.Items.AddRange(new object[] {
-            "a",
-            "b",
-            "c"});
-            this.profilesTargetComboBox.Location = new System.Drawing.Point(3, 16);
-            this.profilesTargetComboBox.Name = "profilesTargetComboBox";
-            this.profilesTargetComboBox.Size = new System.Drawing.Size(135, 25);
-            this.profilesTargetComboBox.TabIndex = 0;
+            this.targetProfileLabel.AutoSize = true;
+            this.profileTableLayoutPanel.SetColumnSpan(this.targetProfileLabel, 2);
+            this.targetProfileLabel.Location = new System.Drawing.Point(395, 0);
+            this.targetProfileLabel.Name = "targetProfileLabel";
+            this.targetProfileLabel.Size = new System.Drawing.Size(49, 13);
+            this.targetProfileLabel.TabIndex = 1;
+            this.targetProfileLabel.Text = "Target profile:";
+            // 
+            // profileSourceComboBox
+            // 
+            this.profileTableLayoutPanel.SetColumnSpan(this.profileSourceComboBox, 3);
+            this.profileSourceComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.profileSourceComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.profileSourceComboBox.FormattingEnabled = true;
+            this.profileSourceComboBox.Items.AddRange(new object[] {
+            "sRGB",
+            "Adobe RGB",
+            "Apple RGB",
+            "CIE RGB",
+            "Wide Gamut",
+            "New"});
+            this.profileSourceComboBox.Location = new System.Drawing.Point(3, 16);
+            this.profileSourceComboBox.Name = "profileSourceComboBox";
+            this.profileSourceComboBox.Size = new System.Drawing.Size(135, 25);
+            this.profileSourceComboBox.TabIndex = 0;
+            this.profileSourceComboBox.SelectedIndexChanged += new System.EventHandler(this.profileSourceComboBox_SelectedIndexChanged);
             // 
             // gammaLabel
             // 
@@ -561,23 +585,25 @@
             this.gammaLabel.TabIndex = 4;
             this.gammaLabel.Text = "Gamma:";
             // 
+            // gammaSourceTextBox
+            // 
+            this.gammaSourceTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gammaSourceTextBox.Location = new System.Drawing.Point(50, 42);
+            this.gammaSourceTextBox.Name = "gammaSourceTextBox";
+            this.gammaSourceTextBox.Size = new System.Drawing.Size(41, 25);
+            this.gammaSourceTextBox.TabIndex = 1;
+            this.gammaSourceTextBox.TextChanged += new System.EventHandler(this.gammaSourceTextBox_TextChanged);
+            this.gammaSourceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
+            // 
             // gammaTargetTextBox
             // 
             this.gammaTargetTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gammaTargetTextBox.Location = new System.Drawing.Point(50, 42);
+            this.gammaTargetTextBox.Location = new System.Drawing.Point(442, 42);
             this.gammaTargetTextBox.Name = "gammaTargetTextBox";
             this.gammaTargetTextBox.Size = new System.Drawing.Size(41, 25);
-            this.gammaTargetTextBox.TabIndex = 1;
+            this.gammaTargetTextBox.TabIndex = 11;
             this.gammaTargetTextBox.TextChanged += new System.EventHandler(this.gammaTargetTextBox_TextChanged);
-            // 
-            // textBoxSourceGamma
-            // 
-            this.textBoxSourceGamma.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxSourceGamma.Location = new System.Drawing.Point(442, 42);
-            this.textBoxSourceGamma.Name = "textBoxSourceGamma";
-            this.textBoxSourceGamma.Size = new System.Drawing.Size(41, 25);
-            this.textBoxSourceGamma.TabIndex = 11;
-            this.textBoxSourceGamma.TextChanged += new System.EventHandler(this.textBoxSourceGamma_TextChanged);
+            this.gammaTargetTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // xLabel
             // 
@@ -656,6 +682,7 @@
             this.xWhiteSourceTextBox.Size = new System.Drawing.Size(30, 25);
             this.xWhiteSourceTextBox.TabIndex = 2;
             this.xWhiteSourceTextBox.TextChanged += new System.EventHandler(this.xWhiteSourceTextBox_TextChanged);
+            this.xWhiteSourceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // picturePanel
             // 
@@ -748,15 +775,15 @@
         private System.Windows.Forms.Button grayButton;
         private System.Windows.Forms.Panel profilesPanel;
         private System.Windows.Forms.TableLayoutPanel profileTableLayoutPanel;
-        private System.Windows.Forms.Label targetProfileLabel;
-        private System.Windows.Forms.Panel picturePanel;
         private System.Windows.Forms.Label sourceProfileLabel;
-        private System.Windows.Forms.ComboBox profilesTargetComboBox;
+        private System.Windows.Forms.Panel picturePanel;
+        private System.Windows.Forms.Label targetProfileLabel;
         private System.Windows.Forms.ComboBox profileSourceComboBox;
+        private System.Windows.Forms.ComboBox profileTargetComboBox;
         private System.Windows.Forms.Label gammaLabel;
-        private System.Windows.Forms.TextBox gammaTargetTextBox;
+        private System.Windows.Forms.TextBox gammaSourceTextBox;
         private System.Windows.Forms.Label gammaSourceLabel;
-        private System.Windows.Forms.TextBox textBoxSourceGamma;
+        private System.Windows.Forms.TextBox gammaTargetTextBox;
         private System.Windows.Forms.Label xLabel;
         private System.Windows.Forms.Label yLabel;
         private System.Windows.Forms.Label yLabel2;
@@ -781,7 +808,7 @@
         private System.Windows.Forms.TextBox yGreenTargetTextBox;
         private System.Windows.Forms.TextBox yRedTargetTextBox;
         private System.Windows.Forms.TextBox yWhiteTargetTextBox;
-        private System.Windows.Forms.TextBox xBlueTextBox;
+        private System.Windows.Forms.TextBox xBlueTargetTextBox;
         private System.Windows.Forms.TextBox xGreenTargetTextBox;
         private System.Windows.Forms.TextBox xRedTargetTextBox;
         private System.Windows.Forms.TextBox xWhiteTargetTextBox;
