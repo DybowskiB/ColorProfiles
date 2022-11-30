@@ -32,11 +32,8 @@ namespace ColorProfiles
         {
             InitializeComponent();
 
-            sourcePictureBox.Image = Image.FromFile(defaultPicturePath);
-
             // Initialize picturebox with default picture
             InitializePictureBox(defaultPicturePath, sourcePictureBox);
-            InitializePictureBox(defaultPicturePath, targetPictureBox);
 
             // Initialize Picture objects
             sourceColorProfile = new sRGB();
@@ -103,15 +100,28 @@ namespace ColorProfiles
                 {
                     sourcePictureBox.Image = new Bitmap(Image.FromFile(dlg.FileName),
                         sourcePictureBox.Width, sourcePictureBox.Height);
-                    targetPictureBox.Image = new Bitmap(Image.FromFile(dlg.FileName),
-                        sourcePictureBox.Width, sourcePictureBox.Height);
+                    targetPictureBox.Image = null;
                 }
             }
         }
 
         private void generateButton_Click(object sender, EventArgs e)
         {
+            Bitmap sourceBitmap = new Bitmap(sourcePictureBox.Image);
+            Bitmap targetBitmap = new Bitmap(sourceBitmap.Width, sourceBitmap.Height);
 
+            ProfileConverter converter = new ProfileConverter(sourceColorProfile, targetColorProfile);
+            for(int x = 0; x < sourceBitmap.Width; ++x)
+            {
+                for(int y = 0; y < sourceBitmap.Height; ++y)
+                {
+                    Color sourceColor = sourceBitmap.GetPixel(x, y);
+                    targetBitmap.SetPixel(x, y, converter.Convert(sourceColor));
+                }
+            }
+
+            targetPictureBox.Image = targetBitmap;
+            sourceBitmap.Dispose();
         }
 
         private void saveButton_Click(object sender, EventArgs e)

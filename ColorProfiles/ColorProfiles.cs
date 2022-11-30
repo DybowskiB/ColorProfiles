@@ -29,14 +29,14 @@ namespace ColorProfiles
 
     public class CIERGB : ColorProfile
     {
-        public CIERGB() : base(2.2, new ColorXY(0.312730, 0.329020), new ColorXY(0.64, 0.33),
+        public CIERGB() : base(2.2, new ColorXY(0.333333, 0.333333), new ColorXY(0.64, 0.33),
                 new ColorXY(0.3, 0.6), new ColorXY(0.15, 0.6))
         { }
     }
 
     public class WideGamut : ColorProfile
     {
-        public WideGamut() : base(2.2, new ColorXY(0.333333, 0.333333), new ColorXY(0.735, 0.265),
+        public WideGamut() : base(2.2, new ColorXY(0.345670, 0.358500), new ColorXY(0.735, 0.265),
                 new ColorXY(0.274, 0.717), new ColorXY(0.167, 0.007))
         { }
     }

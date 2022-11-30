@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,7 +22,31 @@ namespace ColorProfiles
             {
                 X = x;
                 Y = y;
-                Z = 1 - x - y;
+                Z = 1 - (x + y);
+            }
+
+            public ColorXY(ColorXY color)
+                : this(color.X, color.Y)
+            { }
+
+            public static bool operator==(ColorXY color1, ColorXY color2)
+            {
+                return color1.X == color2.X && color1.Y == color2.Y;
+            }
+
+            public static bool operator!=(ColorXY color1, ColorXY color2)
+            {
+                return !(color1 == color2);
+            }
+
+            public override bool Equals(object obj)
+            {
+                return this == (ColorXY)obj;
+            }
+
+            public override int GetHashCode()
+            {
+                return base.GetHashCode();
             }
         }
 
@@ -38,10 +63,10 @@ namespace ColorProfiles
         public ColorProfile(double gamma, ColorXY white, ColorXY red, ColorXY green, ColorXY blue)
         {
             Gamma = gamma;
-            White = white;
-            Red = red;
-            Green = green;
-            Blue = blue;
+            White = new ColorXY(white);
+            Red = new ColorXY(red);
+            Green = new ColorXY(green);
+            Blue = new ColorXY(blue);
         }
     }
 }

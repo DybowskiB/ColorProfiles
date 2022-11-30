@@ -262,7 +262,7 @@
             this.profileTableLayoutPanel.Controls.Add(this.blueLabel, 4, 4);
             this.profileTableLayoutPanel.Controls.Add(this.xWhiteSourceTextBox, 5, 1);
             this.profileTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.profileTableLayoutPanel.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.profileTableLayoutPanel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.profileTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.profileTableLayoutPanel.Name = "profileTableLayoutPanel";
             this.profileTableLayoutPanel.RowCount = 5;
@@ -280,7 +280,7 @@
             this.yBlueTargetTextBox.Location = new System.Drawing.Point(693, 55);
             this.yBlueTargetTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 30, 3);
             this.yBlueTargetTextBox.Name = "yBlueTargetTextBox";
-            this.yBlueTargetTextBox.Size = new System.Drawing.Size(30, 25);
+            this.yBlueTargetTextBox.Size = new System.Drawing.Size(30, 27);
             this.yBlueTargetTextBox.TabIndex = 19;
             this.yBlueTargetTextBox.TextChanged += new System.EventHandler(this.yBlueTargetTextBox_TextChanged);
             this.yBlueTargetTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
@@ -291,7 +291,7 @@
             this.yGreenTargetTextBox.Location = new System.Drawing.Point(693, 42);
             this.yGreenTargetTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 30, 3);
             this.yGreenTargetTextBox.Name = "yGreenTargetTextBox";
-            this.yGreenTargetTextBox.Size = new System.Drawing.Size(30, 25);
+            this.yGreenTargetTextBox.Size = new System.Drawing.Size(30, 27);
             this.yGreenTargetTextBox.TabIndex = 18;
             this.yGreenTargetTextBox.TextChanged += new System.EventHandler(this.yGreenTargetTextBox_TextChanged);
             this.yGreenTargetTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
@@ -302,7 +302,7 @@
             this.yRedTargetTextBox.Location = new System.Drawing.Point(693, 29);
             this.yRedTargetTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 30, 3);
             this.yRedTargetTextBox.Name = "yRedTargetTextBox";
-            this.yRedTargetTextBox.Size = new System.Drawing.Size(30, 25);
+            this.yRedTargetTextBox.Size = new System.Drawing.Size(30, 27);
             this.yRedTargetTextBox.TabIndex = 17;
             this.yRedTargetTextBox.TextChanged += new System.EventHandler(this.yRedTargetTextBox_TextChanged);
             this.yRedTargetTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
@@ -313,7 +313,7 @@
             this.yWhiteTargetTextBox.Location = new System.Drawing.Point(693, 16);
             this.yWhiteTargetTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 30, 3);
             this.yWhiteTargetTextBox.Name = "yWhiteTargetTextBox";
-            this.yWhiteTargetTextBox.Size = new System.Drawing.Size(30, 25);
+            this.yWhiteTargetTextBox.Size = new System.Drawing.Size(30, 27);
             this.yWhiteTargetTextBox.TabIndex = 16;
             this.yWhiteTargetTextBox.TextChanged += new System.EventHandler(this.yWhiteTargetTextBox_TextChanged);
             this.yWhiteTargetTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
@@ -324,7 +324,7 @@
             this.xBlueTargetTextBox.Location = new System.Drawing.Point(630, 55);
             this.xBlueTargetTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 30, 3);
             this.xBlueTargetTextBox.Name = "xBlueTargetTextBox";
-            this.xBlueTargetTextBox.Size = new System.Drawing.Size(30, 25);
+            this.xBlueTargetTextBox.Size = new System.Drawing.Size(30, 27);
             this.xBlueTargetTextBox.TabIndex = 15;
             this.xBlueTargetTextBox.TextChanged += new System.EventHandler(this.xBlueTargetTextBox_TextChanged);
             this.xBlueTargetTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
@@ -335,7 +335,7 @@
             this.xGreenTargetTextBox.Location = new System.Drawing.Point(630, 42);
             this.xGreenTargetTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 30, 3);
             this.xGreenTargetTextBox.Name = "xGreenTargetTextBox";
-            this.xGreenTargetTextBox.Size = new System.Drawing.Size(30, 25);
+            this.xGreenTargetTextBox.Size = new System.Drawing.Size(30, 27);
             this.xGreenTargetTextBox.TabIndex = 14;
             this.xGreenTargetTextBox.TextChanged += new System.EventHandler(this.xGreenTargetTextBox_TextChanged);
             this.xGreenTargetTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
@@ -346,7 +346,7 @@
             this.xRedTargetTextBox.Location = new System.Drawing.Point(630, 29);
             this.xRedTargetTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 30, 3);
             this.xRedTargetTextBox.Name = "xRedTargetTextBox";
-            this.xRedTargetTextBox.Size = new System.Drawing.Size(30, 25);
+            this.xRedTargetTextBox.Size = new System.Drawing.Size(30, 27);
             this.xRedTargetTextBox.TabIndex = 13;
             this.xRedTargetTextBox.TextChanged += new System.EventHandler(this.xRedTargetTextBox_TextChanged);
             this.xRedTargetTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
@@ -357,7 +357,7 @@
             this.xWhiteTargetTextBox.Location = new System.Drawing.Point(630, 16);
             this.xWhiteTargetTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 30, 3);
             this.xWhiteTargetTextBox.Name = "xWhiteTargetTextBox";
-            this.xWhiteTargetTextBox.Size = new System.Drawing.Size(30, 25);
+            this.xWhiteTargetTextBox.Size = new System.Drawing.Size(30, 27);
             this.xWhiteTargetTextBox.TabIndex = 12;
             this.xWhiteTargetTextBox.TextChanged += new System.EventHandler(this.xWhiteTargetTextBox_TextChanged);
             this.xWhiteTargetTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
@@ -368,7 +368,7 @@
             this.yBlueSourceTextBox.Location = new System.Drawing.Point(301, 55);
             this.yBlueSourceTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 30, 3);
             this.yBlueSourceTextBox.Name = "yBlueSourceTextBox";
-            this.yBlueSourceTextBox.Size = new System.Drawing.Size(30, 25);
+            this.yBlueSourceTextBox.Size = new System.Drawing.Size(30, 27);
             this.yBlueSourceTextBox.TabIndex = 9;
             this.yBlueSourceTextBox.TextChanged += new System.EventHandler(this.yBlueSourceTextBox_TextChanged);
             this.yBlueSourceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
@@ -379,7 +379,7 @@
             this.yGreenSourceTextBox.Location = new System.Drawing.Point(301, 42);
             this.yGreenSourceTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 30, 3);
             this.yGreenSourceTextBox.Name = "yGreenSourceTextBox";
-            this.yGreenSourceTextBox.Size = new System.Drawing.Size(30, 25);
+            this.yGreenSourceTextBox.Size = new System.Drawing.Size(30, 27);
             this.yGreenSourceTextBox.TabIndex = 8;
             this.yGreenSourceTextBox.TextChanged += new System.EventHandler(this.yGreenSourceTextBox_TextChanged);
             this.yGreenSourceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
@@ -390,7 +390,7 @@
             this.xRedSourceTextBox.Location = new System.Drawing.Point(238, 29);
             this.xRedSourceTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 30, 3);
             this.xRedSourceTextBox.Name = "xRedSourceTextBox";
-            this.xRedSourceTextBox.Size = new System.Drawing.Size(30, 25);
+            this.xRedSourceTextBox.Size = new System.Drawing.Size(30, 27);
             this.xRedSourceTextBox.TabIndex = 3;
             this.xRedSourceTextBox.TextChanged += new System.EventHandler(this.xRedSourceTextBox_TextChanged);
             this.xRedSourceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
@@ -401,7 +401,7 @@
             this.yWhiteSourceTextBox.Location = new System.Drawing.Point(301, 16);
             this.yWhiteSourceTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 30, 3);
             this.yWhiteSourceTextBox.Name = "yWhiteSourceTextBox";
-            this.yWhiteSourceTextBox.Size = new System.Drawing.Size(30, 25);
+            this.yWhiteSourceTextBox.Size = new System.Drawing.Size(30, 27);
             this.yWhiteSourceTextBox.TabIndex = 6;
             this.yWhiteSourceTextBox.TextChanged += new System.EventHandler(this.yWhiteSourceTextBox_TextChanged);
             this.yWhiteSourceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
@@ -412,7 +412,7 @@
             this.yRedSourceTextBox.Location = new System.Drawing.Point(301, 29);
             this.yRedSourceTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 30, 3);
             this.yRedSourceTextBox.Name = "yRedSourceTextBox";
-            this.yRedSourceTextBox.Size = new System.Drawing.Size(30, 25);
+            this.yRedSourceTextBox.Size = new System.Drawing.Size(30, 27);
             this.yRedSourceTextBox.TabIndex = 7;
             this.yRedSourceTextBox.TextChanged += new System.EventHandler(this.yRedSourceTextBox_TextChanged);
             this.yRedSourceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
@@ -423,7 +423,7 @@
             this.xBlueSourceTextBox.Location = new System.Drawing.Point(238, 55);
             this.xBlueSourceTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 30, 3);
             this.xBlueSourceTextBox.Name = "xBlueSourceTextBox";
-            this.xBlueSourceTextBox.Size = new System.Drawing.Size(30, 25);
+            this.xBlueSourceTextBox.Size = new System.Drawing.Size(30, 27);
             this.xBlueSourceTextBox.TabIndex = 5;
             this.xBlueSourceTextBox.TextChanged += new System.EventHandler(this.xBlueSourceTextBox_TextChanged);
             this.xBlueSourceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
@@ -434,7 +434,7 @@
             this.xGreenSourceTextBox.Location = new System.Drawing.Point(238, 42);
             this.xGreenSourceTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 30, 3);
             this.xGreenSourceTextBox.Name = "xGreenSourceTextBox";
-            this.xGreenSourceTextBox.Size = new System.Drawing.Size(30, 25);
+            this.xGreenSourceTextBox.Size = new System.Drawing.Size(30, 27);
             this.xGreenSourceTextBox.TabIndex = 4;
             this.xGreenSourceTextBox.TextChanged += new System.EventHandler(this.xGreenSourceTextBox_TextChanged);
             this.xGreenSourceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
@@ -522,6 +522,7 @@
             this.profileTableLayoutPanel.SetColumnSpan(this.profileTargetComboBox, 3);
             this.profileTargetComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.profileTargetComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.profileTargetComboBox.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.profileTargetComboBox.FormattingEnabled = true;
             this.profileTargetComboBox.Items.AddRange(new object[] {
             "sRGB",
@@ -532,7 +533,7 @@
             "New"});
             this.profileTargetComboBox.Location = new System.Drawing.Point(395, 16);
             this.profileTargetComboBox.Name = "profileTargetComboBox";
-            this.profileTargetComboBox.Size = new System.Drawing.Size(135, 25);
+            this.profileTargetComboBox.Size = new System.Drawing.Size(135, 28);
             this.profileTargetComboBox.TabIndex = 10;
             this.profileTargetComboBox.SelectedIndexChanged += new System.EventHandler(this.profileTargetComboBox_SelectedIndexChanged);
             // 
@@ -542,7 +543,7 @@
             this.profileTableLayoutPanel.SetColumnSpan(this.sourceProfileLabel, 2);
             this.sourceProfileLabel.Location = new System.Drawing.Point(3, 0);
             this.sourceProfileLabel.Name = "sourceProfileLabel";
-            this.sourceProfileLabel.Size = new System.Drawing.Size(52, 13);
+            this.sourceProfileLabel.Size = new System.Drawing.Size(58, 13);
             this.sourceProfileLabel.TabIndex = 0;
             this.sourceProfileLabel.Text = "Source profile:";
             // 
@@ -552,7 +553,7 @@
             this.profileTableLayoutPanel.SetColumnSpan(this.targetProfileLabel, 2);
             this.targetProfileLabel.Location = new System.Drawing.Point(395, 0);
             this.targetProfileLabel.Name = "targetProfileLabel";
-            this.targetProfileLabel.Size = new System.Drawing.Size(49, 13);
+            this.targetProfileLabel.Size = new System.Drawing.Size(56, 13);
             this.targetProfileLabel.TabIndex = 1;
             this.targetProfileLabel.Text = "Target profile:";
             // 
@@ -561,6 +562,7 @@
             this.profileTableLayoutPanel.SetColumnSpan(this.profileSourceComboBox, 3);
             this.profileSourceComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.profileSourceComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.profileSourceComboBox.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.profileSourceComboBox.FormattingEnabled = true;
             this.profileSourceComboBox.Items.AddRange(new object[] {
             "sRGB",
@@ -571,7 +573,7 @@
             "New"});
             this.profileSourceComboBox.Location = new System.Drawing.Point(3, 16);
             this.profileSourceComboBox.Name = "profileSourceComboBox";
-            this.profileSourceComboBox.Size = new System.Drawing.Size(135, 25);
+            this.profileSourceComboBox.Size = new System.Drawing.Size(135, 28);
             this.profileSourceComboBox.TabIndex = 0;
             this.profileSourceComboBox.SelectedIndexChanged += new System.EventHandler(this.profileSourceComboBox_SelectedIndexChanged);
             // 
@@ -588,9 +590,10 @@
             // gammaSourceTextBox
             // 
             this.gammaSourceTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gammaSourceTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.gammaSourceTextBox.Location = new System.Drawing.Point(50, 42);
             this.gammaSourceTextBox.Name = "gammaSourceTextBox";
-            this.gammaSourceTextBox.Size = new System.Drawing.Size(41, 25);
+            this.gammaSourceTextBox.Size = new System.Drawing.Size(41, 27);
             this.gammaSourceTextBox.TabIndex = 1;
             this.gammaSourceTextBox.TextChanged += new System.EventHandler(this.gammaSourceTextBox_TextChanged);
             this.gammaSourceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
@@ -600,7 +603,7 @@
             this.gammaTargetTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gammaTargetTextBox.Location = new System.Drawing.Point(442, 42);
             this.gammaTargetTextBox.Name = "gammaTargetTextBox";
-            this.gammaTargetTextBox.Size = new System.Drawing.Size(41, 25);
+            this.gammaTargetTextBox.Size = new System.Drawing.Size(41, 27);
             this.gammaTargetTextBox.TabIndex = 11;
             this.gammaTargetTextBox.TextChanged += new System.EventHandler(this.gammaTargetTextBox_TextChanged);
             this.gammaTargetTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
@@ -679,7 +682,7 @@
             this.xWhiteSourceTextBox.Location = new System.Drawing.Point(238, 16);
             this.xWhiteSourceTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 30, 3);
             this.xWhiteSourceTextBox.Name = "xWhiteSourceTextBox";
-            this.xWhiteSourceTextBox.Size = new System.Drawing.Size(30, 25);
+            this.xWhiteSourceTextBox.Size = new System.Drawing.Size(30, 27);
             this.xWhiteSourceTextBox.TabIndex = 2;
             this.xWhiteSourceTextBox.TextChanged += new System.EventHandler(this.xWhiteSourceTextBox_TextChanged);
             this.xWhiteSourceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
