@@ -158,6 +158,7 @@
             // saveButton
             // 
             this.saveButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.saveButton.Enabled = false;
             this.saveButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.saveButton.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.saveButton.Location = new System.Drawing.Point(113, 3);

@@ -62,9 +62,9 @@ namespace ColorProfiles
         private Vector<double> ConvertToXYZ(Color color)
         {
             var RGB = Vector<double>.Build.Dense(new double[] {
-                Math.Pow((double) color.R / 255, sourceProfile.Gamma),
-                Math.Pow((double) color.G / 255, sourceProfile.Gamma),
-                Math.Pow((double) color.B / 255, sourceProfile.Gamma) });
+                Math.Pow((double) color.R / 255, 1 / sourceProfile.Gamma),
+                Math.Pow((double) color.G / 255, 1 / sourceProfile.Gamma),
+                Math.Pow((double) color.B / 255, 1 / sourceProfile.Gamma) });
 
             // Exclude special cases
             Vector<double> XYZ;
@@ -80,7 +80,7 @@ namespace ColorProfiles
 
             // Multiply matrix and vector
             XYZ = toXYZMatrix * RGB;
-            return Vector<double>.Build.Dense(new double[] { XYZ[0], XYZ[1], XYZ[2] });
+            return XYZ;
         }
 
         private Color ConvertToRGB(Vector<double> XYZ)
@@ -96,9 +96,9 @@ namespace ColorProfiles
 
             // Include gamma correction
             RGB = Vector<double>.Build.Dense(new double[] {
-                Math.Pow((double) RGB[0], 1 / targetProfile.Gamma),
-                Math.Pow((double) RGB[1], 1 / targetProfile.Gamma),
-                Math.Pow((double) RGB[2], 1 / targetProfile.Gamma) });
+                Math.Pow((double) RGB[0], targetProfile.Gamma),
+                Math.Pow((double) RGB[1], targetProfile.Gamma),
+                Math.Pow((double) RGB[2], targetProfile.Gamma) });
             int R = RGB[0] >= 0 ? Math.Min((int)(RGB[0] * 255), 255) : 0;
             int G = RGB[1] >= 0 ? Math.Min((int)(RGB[1] * 255), 255) : 0;
             int B = RGB[2] >= 0 ? Math.Min((int)(RGB[2] * 255), 255) : 0;
@@ -127,10 +127,10 @@ namespace ColorProfiles
         private Matrix<double> ComputeBradfordMatrix()
         {
             // Coordinates of destination and source white
-            var XYZdw = Vector<double>.Build.Dense(new double[] { targetProfile.White.X * (1 / targetProfile.White.Y), 1, 
-                                                                  targetProfile.White.Z * (1 / targetProfile.White.Y) });
-            var XYZsw = Vector<double>.Build.Dense(new double[] { sourceProfile.White.X * (1 / sourceProfile.White.Y), 1, 
-                                                                  sourceProfile.White.Z * (1 / sourceProfile.White.Y) });
+            var XYZdw = Vector<double>.Build.Dense(new double[] { (targetProfile.White.X * (1 / targetProfile.White.Y)), 1, 
+                                                                    (targetProfile.White.Z * (1 / targetProfile.White.Y)) });
+            var XYZsw = Vector<double>.Build.Dense(new double[] { (sourceProfile.White.X * (1 / sourceProfile.White.Y)), 1, 
+                                                                    (sourceProfile.White.Z * (1 / sourceProfile.White.Y)) });
             // Cone response matrix
             var ConResMatrix = Matrix<double>.Build.DenseOfArray(new double[,] {
                 { 0.8951, 0.2664, -0.1614},

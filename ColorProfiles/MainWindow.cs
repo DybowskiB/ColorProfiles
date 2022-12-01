@@ -12,6 +12,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Resources.ResXFileRef;
 
 namespace ColorProfiles
 {
@@ -27,6 +28,7 @@ namespace ColorProfiles
 
         // Auxiliry flag
         private bool changeProfileFlag = false;
+        private bool textChangedFlag = false;
 
         public MainWindow()
         {
@@ -101,6 +103,9 @@ namespace ColorProfiles
                     sourcePictureBox.Image = new Bitmap(Image.FromFile(dlg.FileName),
                         sourcePictureBox.Width, sourcePictureBox.Height);
                     targetPictureBox.Image = null;
+
+                    // Disable saving (targetPictureBox is empty)
+                    saveButton.Enabled = false;
                 }
             }
         }
@@ -122,6 +127,9 @@ namespace ColorProfiles
 
             targetPictureBox.Image = targetBitmap;
             sourceBitmap.Dispose();
+
+            // Enable saving
+            saveButton.Enabled = true;
         }
 
         private void saveButton_Click(object sender, EventArgs e)
@@ -140,7 +148,28 @@ namespace ColorProfiles
 
         private void grayButton_Click(object sender, EventArgs e)
         {
+            Bitmap sourceBitmap;
+            if (targetPictureBox.Image == null)
+                sourceBitmap = new Bitmap(sourcePictureBox.Image);
+            else
+                sourceBitmap = new Bitmap(targetPictureBox.Image);
+            Bitmap targetBitmap = new Bitmap(sourceBitmap.Width, sourceBitmap.Height);
 
+            for (int x = 0; x < sourceBitmap.Width; ++x)
+            {
+                for (int y = 0; y < sourceBitmap.Height; ++y)
+                {
+                    Color sourceColor = sourceBitmap.GetPixel(x, y);
+                    // Grayscale weighted average, Y = 0.299 * R + 0.587 * G + 0.114 * B
+                    int Y = (int)Math.Round(0.299 * sourceColor.R + 0.587 * sourceColor.G + 0.114 * sourceColor.B);
+                    targetBitmap.SetPixel(x, y, Color.FromArgb(Y, Y, Y));
+                }
+            }
+            targetPictureBox.Image = targetBitmap;
+            sourceBitmap.Dispose();
+
+            // Enable saving
+            saveButton.Enabled = true;
         }
 
         private bool ValidateXY(TextBox textBox)
@@ -181,128 +210,182 @@ namespace ColorProfiles
 
         private void gammaSourceTextBox_TextChanged(object sender, EventArgs e)
         {
-            sourceColorProfile = new NewColorProfile(sourceColorProfile);
-            HandleTextChanged((TextBox)sender, sourceColorProfile, (sourceColorProfile as NewColorProfile).SetGamma,
-                profileSourceComboBox, ValidateGamma);
+            if (textChangedFlag)
+            {
+                sourceColorProfile = new NewColorProfile(sourceColorProfile);
+                HandleTextChanged((TextBox)sender, sourceColorProfile, (sourceColorProfile as NewColorProfile).SetGamma,
+                    profileSourceComboBox, ValidateGamma);
+            }
         }
 
         private void gammaTargetTextBox_TextChanged(object sender, EventArgs e)
         {
-            targetColorProfile = new NewColorProfile(targetColorProfile);
-            HandleTextChanged((TextBox)sender, targetColorProfile, (targetColorProfile as NewColorProfile).SetGamma,
-                profileTargetComboBox, ValidateGamma);
+            if (textChangedFlag)
+            {
+                targetColorProfile = new NewColorProfile(targetColorProfile);
+                HandleTextChanged((TextBox)sender, targetColorProfile, (targetColorProfile as NewColorProfile).SetGamma,
+                    profileTargetComboBox, ValidateGamma);
+            }
         }
 
         private void xWhiteSourceTextBox_TextChanged(object sender, EventArgs e)
         {
-            sourceColorProfile = new NewColorProfile(sourceColorProfile);
-            HandleTextChanged((TextBox)sender, sourceColorProfile, (sourceColorProfile as NewColorProfile).SetWhiteX,
-                profileSourceComboBox, ValidateXY);
+            if (textChangedFlag)
+            {
+                sourceColorProfile = new NewColorProfile(sourceColorProfile);
+                HandleTextChanged((TextBox)sender, sourceColorProfile, (sourceColorProfile as NewColorProfile).SetWhiteX,
+                    profileSourceComboBox, ValidateXY);
+            }
         }
 
         private void xRedSourceTextBox_TextChanged(object sender, EventArgs e)
         {
-            sourceColorProfile = new NewColorProfile(sourceColorProfile);
-            HandleTextChanged((TextBox)sender, sourceColorProfile, (sourceColorProfile as NewColorProfile).SetRedX,
-                profileSourceComboBox, ValidateXY);
+            if (textChangedFlag)
+            {
+                sourceColorProfile = new NewColorProfile(sourceColorProfile);
+                HandleTextChanged((TextBox)sender, sourceColorProfile, (sourceColorProfile as NewColorProfile).SetRedX,
+                    profileSourceComboBox, ValidateXY);
+            }
         }
 
         private void yWhiteSourceTextBox_TextChanged(object sender, EventArgs e)
         {
-            sourceColorProfile = new NewColorProfile(sourceColorProfile);
-            HandleTextChanged((TextBox)sender, sourceColorProfile, (sourceColorProfile as NewColorProfile).SetWhiteY,
-                profileSourceComboBox, ValidateXY);
+            if (textChangedFlag)
+            {
+                sourceColorProfile = new NewColorProfile(sourceColorProfile);
+                HandleTextChanged((TextBox)sender, sourceColorProfile, (sourceColorProfile as NewColorProfile).SetWhiteY,
+                    profileSourceComboBox, ValidateXY);
+            }
         }
 
         private void xBlueSourceTextBox_TextChanged(object sender, EventArgs e)
         {
-            sourceColorProfile = new NewColorProfile(sourceColorProfile);
-            HandleTextChanged((TextBox)sender, sourceColorProfile, (sourceColorProfile as NewColorProfile).SetBlueX,
-                profileSourceComboBox, ValidateXY);
+            if (textChangedFlag)
+            {
+                sourceColorProfile = new NewColorProfile(sourceColorProfile);
+                HandleTextChanged((TextBox)sender, sourceColorProfile, (sourceColorProfile as NewColorProfile).SetBlueX,
+                    profileSourceComboBox, ValidateXY);
+            }
         }
 
         private void xGreenSourceTextBox_TextChanged(object sender, EventArgs e)
         {
-            sourceColorProfile = new NewColorProfile(sourceColorProfile);
-            HandleTextChanged((TextBox)sender, sourceColorProfile, (sourceColorProfile as NewColorProfile).SetGreenX,
-                profileSourceComboBox, ValidateXY);
+            if (textChangedFlag)
+            {
+                sourceColorProfile = new NewColorProfile(sourceColorProfile);
+                HandleTextChanged((TextBox)sender, sourceColorProfile, (sourceColorProfile as NewColorProfile).SetGreenX,
+                    profileSourceComboBox, ValidateXY);
+            }
         }
 
         private void yBlueSourceTextBox_TextChanged(object sender, EventArgs e)
         {
-            sourceColorProfile = new NewColorProfile(sourceColorProfile);
-            HandleTextChanged((TextBox)sender, sourceColorProfile, (sourceColorProfile as NewColorProfile).SetBlueY,
-                profileSourceComboBox, ValidateXY);
+            if (textChangedFlag)
+            {
+                sourceColorProfile = new NewColorProfile(sourceColorProfile);
+                HandleTextChanged((TextBox)sender, sourceColorProfile, (sourceColorProfile as NewColorProfile).SetBlueY,
+                    profileSourceComboBox, ValidateXY);
+            }
         }
 
         private void yGreenSourceTextBox_TextChanged(object sender, EventArgs e)
         {
-            sourceColorProfile = new NewColorProfile(sourceColorProfile);
-            HandleTextChanged((TextBox)sender, sourceColorProfile, (sourceColorProfile as NewColorProfile).SetGreenY,
-                profileSourceComboBox, ValidateXY);
+            if (textChangedFlag)
+            {
+                sourceColorProfile = new NewColorProfile(sourceColorProfile);
+                HandleTextChanged((TextBox)sender, sourceColorProfile, (sourceColorProfile as NewColorProfile).SetGreenY,
+                    profileSourceComboBox, ValidateXY);
+            }
         }
 
         private void yRedSourceTextBox_TextChanged(object sender, EventArgs e)
         {
-            sourceColorProfile = new NewColorProfile(sourceColorProfile);
-            HandleTextChanged((TextBox)sender, sourceColorProfile, (sourceColorProfile as NewColorProfile).SetRedY,
-                profileSourceComboBox, ValidateXY);
+            if (textChangedFlag)
+            {
+                sourceColorProfile = new NewColorProfile(sourceColorProfile);
+                HandleTextChanged((TextBox)sender, sourceColorProfile, (sourceColorProfile as NewColorProfile).SetRedY,
+                    profileSourceComboBox, ValidateXY);
+            }
         }
 
         private void xBlueTargetTextBox_TextChanged(object sender, EventArgs e)
         {
-            targetColorProfile = new NewColorProfile(targetColorProfile);
-            HandleTextChanged((TextBox)sender, targetColorProfile, (targetColorProfile as NewColorProfile).SetBlueX,
-                profileTargetComboBox, ValidateXY);
+            if (textChangedFlag)
+            {
+                targetColorProfile = new NewColorProfile(targetColorProfile);
+                HandleTextChanged((TextBox)sender, targetColorProfile, (targetColorProfile as NewColorProfile).SetBlueX,
+                    profileTargetComboBox, ValidateXY);
+            }
         }
 
         private void xGreenTargetTextBox_TextChanged(object sender, EventArgs e)
         {
-            targetColorProfile = new NewColorProfile(targetColorProfile);
-            HandleTextChanged((TextBox)sender, targetColorProfile, (targetColorProfile as NewColorProfile).SetGreenX,
-                profileTargetComboBox, ValidateXY);
+            if (textChangedFlag)
+            {
+                targetColorProfile = new NewColorProfile(targetColorProfile);
+                HandleTextChanged((TextBox)sender, targetColorProfile, (targetColorProfile as NewColorProfile).SetGreenX,
+                    profileTargetComboBox, ValidateXY);
+            }
         }
 
         private void xRedTargetTextBox_TextChanged(object sender, EventArgs e)
         {
-            targetColorProfile = new NewColorProfile(targetColorProfile);
-            HandleTextChanged((TextBox)sender, targetColorProfile, (targetColorProfile as NewColorProfile).SetRedX,
-                profileTargetComboBox, ValidateXY);
+            if (textChangedFlag)
+            {
+                targetColorProfile = new NewColorProfile(targetColorProfile);
+                HandleTextChanged((TextBox)sender, targetColorProfile, (targetColorProfile as NewColorProfile).SetRedX,
+                    profileTargetComboBox, ValidateXY);
+            }
         }
 
         private void xWhiteTargetTextBox_TextChanged(object sender, EventArgs e)
         {
-            targetColorProfile = new NewColorProfile(targetColorProfile);
-            HandleTextChanged((TextBox)sender, targetColorProfile, (targetColorProfile as NewColorProfile).SetWhiteX,
-                profileTargetComboBox, ValidateXY);
+            if (textChangedFlag)
+            {
+                targetColorProfile = new NewColorProfile(targetColorProfile);
+                HandleTextChanged((TextBox)sender, targetColorProfile, (targetColorProfile as NewColorProfile).SetWhiteX,
+                    profileTargetComboBox, ValidateXY);
+            }
         }
 
         private void yBlueTargetTextBox_TextChanged(object sender, EventArgs e)
         {
-            targetColorProfile = new NewColorProfile(targetColorProfile);
-            HandleTextChanged((TextBox)sender, targetColorProfile, (targetColorProfile as NewColorProfile).SetBlueY,
-                profileTargetComboBox, ValidateXY);
+            if (textChangedFlag)
+            {
+                targetColorProfile = new NewColorProfile(targetColorProfile);
+                HandleTextChanged((TextBox)sender, targetColorProfile, (targetColorProfile as NewColorProfile).SetBlueY,
+                    profileTargetComboBox, ValidateXY);
+            }
         }
 
         private void yGreenTargetTextBox_TextChanged(object sender, EventArgs e)
         {
-            targetColorProfile = new NewColorProfile(targetColorProfile);
-            HandleTextChanged((TextBox)sender, targetColorProfile, (targetColorProfile as NewColorProfile).SetGreenY,
-                profileTargetComboBox, ValidateXY);
+            if (textChangedFlag)
+            {
+                targetColorProfile = new NewColorProfile(targetColorProfile);
+                HandleTextChanged((TextBox)sender, targetColorProfile, (targetColorProfile as NewColorProfile).SetGreenY,
+                    profileTargetComboBox, ValidateXY);
+            }
         }
 
         private void yRedTargetTextBox_TextChanged(object sender, EventArgs e)
         {
-            targetColorProfile = new NewColorProfile(targetColorProfile);
-            HandleTextChanged((TextBox)sender, targetColorProfile, (targetColorProfile as NewColorProfile).SetRedY,
-                profileTargetComboBox, ValidateXY);
+            if (textChangedFlag)
+            {
+                targetColorProfile = new NewColorProfile(targetColorProfile);
+                HandleTextChanged((TextBox)sender, targetColorProfile, (targetColorProfile as NewColorProfile).SetRedY,
+                    profileTargetComboBox, ValidateXY);
+            }
         }
 
         private void yWhiteTargetTextBox_TextChanged(object sender, EventArgs e)
         {
-            targetColorProfile = new NewColorProfile(targetColorProfile);
-            HandleTextChanged((TextBox)sender, targetColorProfile, (targetColorProfile as NewColorProfile).SetWhiteY,
-                profileTargetComboBox, ValidateXY);
+            if (textChangedFlag)
+            {
+                targetColorProfile = new NewColorProfile(targetColorProfile);
+                HandleTextChanged((TextBox)sender, targetColorProfile, (targetColorProfile as NewColorProfile).SetWhiteY,
+                    profileTargetComboBox, ValidateXY);
+            }
         }
 
         private void HandleTextChanged(TextBox textBox, ColorProfile colorProfile, Action<double> func, 
@@ -327,18 +410,18 @@ namespace ColorProfiles
         {
             ChangeProfile(gammaSourceTextBox, xWhiteSourceTextBox, yWhiteSourceTextBox,
                 xRedSourceTextBox, yRedSourceTextBox, xGreenSourceTextBox, yGreenSourceTextBox,
-                xBlueSourceTextBox, yBlueSourceTextBox, sourceColorProfile, profileSourceComboBox);
+                xBlueSourceTextBox, yBlueSourceTextBox, ref sourceColorProfile, profileSourceComboBox);
         }
 
         private void profileTargetComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ChangeProfile(gammaTargetTextBox, xWhiteTargetTextBox, yWhiteTargetTextBox,
                 xRedTargetTextBox, yRedTargetTextBox, xGreenTargetTextBox, yGreenTargetTextBox,
-                xBlueTargetTextBox, yBlueTargetTextBox, targetColorProfile, profileTargetComboBox);
+                xBlueTargetTextBox, yBlueTargetTextBox, ref targetColorProfile, profileTargetComboBox);
         }
 
         private void ChangeProfile(TextBox gamma, TextBox xW, TextBox yW, TextBox xR, TextBox yR,
-            TextBox xG, TextBox yG, TextBox xB, TextBox yB, ColorProfile profile, ComboBox comboBox)
+            TextBox xG, TextBox yG, TextBox xB, TextBox yB, ref ColorProfile profile, ComboBox comboBox)
         {
             switch (comboBox.SelectedIndex)
             {
@@ -361,6 +444,7 @@ namespace ColorProfiles
                     profile = new NewColorProfile(profile);
                     break;
             }
+            textChangedFlag = false;
             gamma.Text = profile.Gamma.ToString();
             xW.Text = profile.White.X.ToString();
             yW.Text = profile.White.Y.ToString();
@@ -370,6 +454,7 @@ namespace ColorProfiles
             yG.Text = profile.Green.Y.ToString();
             xB.Text = profile.Blue.X.ToString();
             yB.Text = profile.Blue.Y.ToString();
+            textChangedFlag = true;
         }
 
         private void TextBox_KeyPress(object sender, KeyPressEventArgs e)

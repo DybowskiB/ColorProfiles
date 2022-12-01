@@ -16,28 +16,28 @@ namespace ColorProfiles
     public class AdobeRGB : ColorProfile
     {
         public AdobeRGB() : base(2.2, new ColorXY(0.312730, 0.329020), new ColorXY(0.64, 0.33),
-                new ColorXY(0.21, 0.71), new ColorXY(0.15, 0.6))
+                new ColorXY(0.21, 0.71), new ColorXY(0.15, 0.06))
         { }
     }
 
     public class AppleRGB : ColorProfile
     {
         public AppleRGB() : base(1.8, new ColorXY(0.312730, 0.329020), new ColorXY(0.625, 0.34),
-                new ColorXY(0.28, 0.595), new ColorXY(0.155, 0.7))
+                new ColorXY(0.28, 0.595), new ColorXY(0.155, 0.07))
         { }
     }
 
     public class CIERGB : ColorProfile
     {
-        public CIERGB() : base(2.2, new ColorXY(0.333333, 0.333333), new ColorXY(0.64, 0.33),
-                new ColorXY(0.3, 0.6), new ColorXY(0.15, 0.6))
+        public CIERGB() : base(2.2, new ColorXY(0.333333, 0.333333), new ColorXY(0.735, 0.265),
+                new ColorXY(0.274, 0.717), new ColorXY(0.167, 0.007))
         { }
     }
 
     public class WideGamut : ColorProfile
     {
-        public WideGamut() : base(2.2, new ColorXY(0.345670, 0.358500), new ColorXY(0.735, 0.265),
-                new ColorXY(0.274, 0.717), new ColorXY(0.167, 0.007))
+        public WideGamut() : base(1.2, new ColorXY(0.345670, 0.358500), new ColorXY(0.7347, 0.2653),
+                new ColorXY(0.1152,0.8264), new ColorXY(0.1566, 0.0177))
         { }
     }
 
