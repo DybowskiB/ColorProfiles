@@ -30,6 +30,9 @@ namespace ColorProfiles
         private bool changeProfileFlag = false;
         private bool textChangedFlag = false;
 
+        // Block generate
+        private Dictionary<(int, TextBox), bool> blockGenerateHashSet;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -44,6 +47,9 @@ namespace ColorProfiles
             // Initialize selected profiles
             profileSourceComboBox.SelectedIndex = 0;
             profileTargetComboBox.SelectedIndex = 0;
+
+            // Initialize set required to validation
+            InitializeValidationSet();
         }
 
 
@@ -88,6 +94,44 @@ namespace ColorProfiles
             return destImage;
         }
 
+        // Validation
+
+        private void InitializeValidationSet()
+        {
+            blockGenerateHashSet = new Dictionary<(int, TextBox), bool>();
+            blockGenerateHashSet.Add((0, xWhiteSourceTextBox), false);
+            blockGenerateHashSet.Add((0, yWhiteSourceTextBox), false);
+            blockGenerateHashSet.Add((0, xRedSourceTextBox), false);
+            blockGenerateHashSet.Add((0, yRedSourceTextBox), false);
+            blockGenerateHashSet.Add((0, xGreenSourceTextBox), false);
+            blockGenerateHashSet.Add((0, yGreenSourceTextBox), false);
+            blockGenerateHashSet.Add((0, xBlueSourceTextBox), false);
+            blockGenerateHashSet.Add((0, yBlueSourceTextBox), false);
+            blockGenerateHashSet.Add((0, xWhiteTargetTextBox), false);
+            blockGenerateHashSet.Add((0, yWhiteTargetTextBox), false);
+            blockGenerateHashSet.Add((0, xRedTargetTextBox), false);
+            blockGenerateHashSet.Add((0, yRedTargetTextBox), false);
+            blockGenerateHashSet.Add((0, xGreenTargetTextBox), false);
+            blockGenerateHashSet.Add((0, yGreenTargetTextBox), false);
+            blockGenerateHashSet.Add((0, xBlueTargetTextBox), false);
+            blockGenerateHashSet.Add((0, yBlueTargetTextBox), false);
+            blockGenerateHashSet.Add((1, xWhiteSourceTextBox), false);
+            blockGenerateHashSet.Add((1, yWhiteSourceTextBox), false);
+            blockGenerateHashSet.Add((1, xRedSourceTextBox), false);
+            blockGenerateHashSet.Add((1, yRedSourceTextBox), false);
+            blockGenerateHashSet.Add((1, xGreenSourceTextBox), false);
+            blockGenerateHashSet.Add((1, yGreenSourceTextBox), false);
+            blockGenerateHashSet.Add((1, xBlueSourceTextBox), false);
+            blockGenerateHashSet.Add((1, yBlueSourceTextBox), false);
+            blockGenerateHashSet.Add((1, xWhiteTargetTextBox), false);
+            blockGenerateHashSet.Add((1, yWhiteTargetTextBox), false);
+            blockGenerateHashSet.Add((1, xRedTargetTextBox), false);
+            blockGenerateHashSet.Add((1, yRedTargetTextBox), false);
+            blockGenerateHashSet.Add((1, xGreenTargetTextBox), false);
+            blockGenerateHashSet.Add((1, yGreenTargetTextBox), false);
+            blockGenerateHashSet.Add((1, xBlueTargetTextBox), false);
+            blockGenerateHashSet.Add((1, yBlueTargetTextBox), false);
+        }
 
         // Events
         private void loadPictureButton_Click(object sender, EventArgs e)
@@ -195,6 +239,32 @@ namespace ColorProfiles
             return true;
         }
 
+        private bool ValidateSum(TextBox textBox, TextBox textBox2)
+        {
+            try
+            {
+                double val1 = double.Parse(textBox.Text);
+                double val2 = double.Parse(textBox2.Text);
+
+                if (val1 + val2 < 0 || val1 + val2 > 1)
+                {
+                    errorProvider.SetError(textBox, "0 <= x + y <= 1 condition must be held!");
+                    errorProvider.SetError(textBox2, "0 <= x + y <= 1 condition must be held!");
+                    return false;
+                }
+                else
+                {
+                    errorProvider.SetError(textBox, "");
+                    errorProvider.SetError(textBox2, "");
+                }
+                return true;
+            }
+            catch(Exception)
+            {
+                return false;
+            }
+        }
+
         private bool CheckIfNumberIsBetweenRange(TextBox textBox, double a, double b)
         {
             double number = double.Parse(textBox.Text);
@@ -213,7 +283,7 @@ namespace ColorProfiles
             if (textChangedFlag)
             {
                 sourceColorProfile = new NewColorProfile(sourceColorProfile);
-                HandleTextChanged((TextBox)sender, sourceColorProfile, (sourceColorProfile as NewColorProfile).SetGamma,
+                HandleTextChanged((TextBox)sender, (sourceColorProfile as NewColorProfile).SetGamma,
                     profileSourceComboBox, ValidateGamma);
             }
         }
@@ -223,7 +293,7 @@ namespace ColorProfiles
             if (textChangedFlag)
             {
                 targetColorProfile = new NewColorProfile(targetColorProfile);
-                HandleTextChanged((TextBox)sender, targetColorProfile, (targetColorProfile as NewColorProfile).SetGamma,
+                HandleTextChanged((TextBox)sender, (targetColorProfile as NewColorProfile).SetGamma,
                     profileTargetComboBox, ValidateGamma);
             }
         }
@@ -233,8 +303,8 @@ namespace ColorProfiles
             if (textChangedFlag)
             {
                 sourceColorProfile = new NewColorProfile(sourceColorProfile);
-                HandleTextChanged((TextBox)sender, sourceColorProfile, (sourceColorProfile as NewColorProfile).SetWhiteX,
-                    profileSourceComboBox, ValidateXY);
+                HandleTextChanged((TextBox)sender, (sourceColorProfile as NewColorProfile).SetWhiteX,
+                    profileSourceComboBox, ValidateXY, yWhiteSourceTextBox);
             }
         }
 
@@ -243,8 +313,8 @@ namespace ColorProfiles
             if (textChangedFlag)
             {
                 sourceColorProfile = new NewColorProfile(sourceColorProfile);
-                HandleTextChanged((TextBox)sender, sourceColorProfile, (sourceColorProfile as NewColorProfile).SetRedX,
-                    profileSourceComboBox, ValidateXY);
+                HandleTextChanged((TextBox)sender, (sourceColorProfile as NewColorProfile).SetRedX,
+                    profileSourceComboBox, ValidateXY, yRedSourceTextBox);
             }
         }
 
@@ -253,8 +323,8 @@ namespace ColorProfiles
             if (textChangedFlag)
             {
                 sourceColorProfile = new NewColorProfile(sourceColorProfile);
-                HandleTextChanged((TextBox)sender, sourceColorProfile, (sourceColorProfile as NewColorProfile).SetWhiteY,
-                    profileSourceComboBox, ValidateXY);
+                HandleTextChanged((TextBox)sender, (sourceColorProfile as NewColorProfile).SetWhiteY,
+                    profileSourceComboBox, ValidateXY, xWhiteSourceTextBox);
             }
         }
 
@@ -263,8 +333,8 @@ namespace ColorProfiles
             if (textChangedFlag)
             {
                 sourceColorProfile = new NewColorProfile(sourceColorProfile);
-                HandleTextChanged((TextBox)sender, sourceColorProfile, (sourceColorProfile as NewColorProfile).SetBlueX,
-                    profileSourceComboBox, ValidateXY);
+                HandleTextChanged((TextBox)sender, (sourceColorProfile as NewColorProfile).SetBlueX,
+                    profileSourceComboBox, ValidateXY, yBlueSourceTextBox);
             }
         }
 
@@ -273,8 +343,8 @@ namespace ColorProfiles
             if (textChangedFlag)
             {
                 sourceColorProfile = new NewColorProfile(sourceColorProfile);
-                HandleTextChanged((TextBox)sender, sourceColorProfile, (sourceColorProfile as NewColorProfile).SetGreenX,
-                    profileSourceComboBox, ValidateXY);
+                HandleTextChanged((TextBox)sender, (sourceColorProfile as NewColorProfile).SetGreenX,
+                    profileSourceComboBox, ValidateXY, yGreenSourceTextBox);
             }
         }
 
@@ -283,8 +353,8 @@ namespace ColorProfiles
             if (textChangedFlag)
             {
                 sourceColorProfile = new NewColorProfile(sourceColorProfile);
-                HandleTextChanged((TextBox)sender, sourceColorProfile, (sourceColorProfile as NewColorProfile).SetBlueY,
-                    profileSourceComboBox, ValidateXY);
+                HandleTextChanged((TextBox)sender, (sourceColorProfile as NewColorProfile).SetBlueY,
+                    profileSourceComboBox, ValidateXY, xBlueSourceTextBox);
             }
         }
 
@@ -293,8 +363,8 @@ namespace ColorProfiles
             if (textChangedFlag)
             {
                 sourceColorProfile = new NewColorProfile(sourceColorProfile);
-                HandleTextChanged((TextBox)sender, sourceColorProfile, (sourceColorProfile as NewColorProfile).SetGreenY,
-                    profileSourceComboBox, ValidateXY);
+                HandleTextChanged((TextBox)sender, (sourceColorProfile as NewColorProfile).SetGreenY,
+                    profileSourceComboBox, ValidateXY, xGreenSourceTextBox);
             }
         }
 
@@ -303,8 +373,8 @@ namespace ColorProfiles
             if (textChangedFlag)
             {
                 sourceColorProfile = new NewColorProfile(sourceColorProfile);
-                HandleTextChanged((TextBox)sender, sourceColorProfile, (sourceColorProfile as NewColorProfile).SetRedY,
-                    profileSourceComboBox, ValidateXY);
+                HandleTextChanged((TextBox)sender, (sourceColorProfile as NewColorProfile).SetRedY,
+                    profileSourceComboBox, ValidateXY, xRedSourceTextBox);
             }
         }
 
@@ -313,8 +383,8 @@ namespace ColorProfiles
             if (textChangedFlag)
             {
                 targetColorProfile = new NewColorProfile(targetColorProfile);
-                HandleTextChanged((TextBox)sender, targetColorProfile, (targetColorProfile as NewColorProfile).SetBlueX,
-                    profileTargetComboBox, ValidateXY);
+                HandleTextChanged((TextBox)sender, (targetColorProfile as NewColorProfile).SetBlueX,
+                    profileTargetComboBox, ValidateXY, yBlueTargetTextBox);
             }
         }
 
@@ -323,8 +393,8 @@ namespace ColorProfiles
             if (textChangedFlag)
             {
                 targetColorProfile = new NewColorProfile(targetColorProfile);
-                HandleTextChanged((TextBox)sender, targetColorProfile, (targetColorProfile as NewColorProfile).SetGreenX,
-                    profileTargetComboBox, ValidateXY);
+                HandleTextChanged((TextBox)sender, (targetColorProfile as NewColorProfile).SetGreenX,
+                    profileTargetComboBox, ValidateXY, yGreenTargetTextBox);
             }
         }
 
@@ -333,8 +403,8 @@ namespace ColorProfiles
             if (textChangedFlag)
             {
                 targetColorProfile = new NewColorProfile(targetColorProfile);
-                HandleTextChanged((TextBox)sender, targetColorProfile, (targetColorProfile as NewColorProfile).SetRedX,
-                    profileTargetComboBox, ValidateXY);
+                HandleTextChanged((TextBox)sender, (targetColorProfile as NewColorProfile).SetRedX,
+                    profileTargetComboBox, ValidateXY, yRedTargetTextBox);
             }
         }
 
@@ -343,8 +413,8 @@ namespace ColorProfiles
             if (textChangedFlag)
             {
                 targetColorProfile = new NewColorProfile(targetColorProfile);
-                HandleTextChanged((TextBox)sender, targetColorProfile, (targetColorProfile as NewColorProfile).SetWhiteX,
-                    profileTargetComboBox, ValidateXY);
+                HandleTextChanged((TextBox)sender, (targetColorProfile as NewColorProfile).SetWhiteX,
+                    profileTargetComboBox, ValidateXY, yWhiteTargetTextBox);
             }
         }
 
@@ -353,8 +423,8 @@ namespace ColorProfiles
             if (textChangedFlag)
             {
                 targetColorProfile = new NewColorProfile(targetColorProfile);
-                HandleTextChanged((TextBox)sender, targetColorProfile, (targetColorProfile as NewColorProfile).SetBlueY,
-                    profileTargetComboBox, ValidateXY);
+                HandleTextChanged((TextBox)sender, (targetColorProfile as NewColorProfile).SetBlueY,
+                    profileTargetComboBox, ValidateXY, xBlueTargetTextBox);
             }
         }
 
@@ -363,8 +433,8 @@ namespace ColorProfiles
             if (textChangedFlag)
             {
                 targetColorProfile = new NewColorProfile(targetColorProfile);
-                HandleTextChanged((TextBox)sender, targetColorProfile, (targetColorProfile as NewColorProfile).SetGreenY,
-                    profileTargetComboBox, ValidateXY);
+                HandleTextChanged((TextBox)sender, (targetColorProfile as NewColorProfile).SetGreenY,
+                    profileTargetComboBox, ValidateXY, xGreenTargetTextBox);
             }
         }
 
@@ -373,8 +443,8 @@ namespace ColorProfiles
             if (textChangedFlag)
             {
                 targetColorProfile = new NewColorProfile(targetColorProfile);
-                HandleTextChanged((TextBox)sender, targetColorProfile, (targetColorProfile as NewColorProfile).SetRedY,
-                    profileTargetComboBox, ValidateXY);
+                HandleTextChanged((TextBox)sender, (targetColorProfile as NewColorProfile).SetRedY,
+                    profileTargetComboBox, ValidateXY, xRedTargetTextBox);
             }
         }
 
@@ -383,13 +453,13 @@ namespace ColorProfiles
             if (textChangedFlag)
             {
                 targetColorProfile = new NewColorProfile(targetColorProfile);
-                HandleTextChanged((TextBox)sender, targetColorProfile, (targetColorProfile as NewColorProfile).SetWhiteY,
-                    profileTargetComboBox, ValidateXY);
+                HandleTextChanged((TextBox)sender, (targetColorProfile as NewColorProfile).SetWhiteY,
+                    profileTargetComboBox, ValidateXY, xWhiteTargetTextBox);
             }
         }
 
-        private void HandleTextChanged(TextBox textBox, ColorProfile colorProfile, Action<double> func, 
-            ComboBox comboBox, Func<TextBox, bool> validation)
+        private void HandleTextChanged(TextBox textBox, Action<double> func, ComboBox comboBox,
+            Func<TextBox, bool> validation, TextBox textBox2 = null)
         {
             if (validation(textBox))
             {
@@ -400,10 +470,26 @@ namespace ColorProfiles
                     comboBox.SelectedItem = "New";
                     changeProfileFlag = false;
                 }
-                generateButton.Enabled = true;
+                blockGenerateHashSet[(0, textBox)] = false;
+                if (!blockGenerateHashSet.ContainsValue(true))
+                    generateButton.Enabled = true;
             }
             else
+            {
+                blockGenerateHashSet[(0, textBox)] = true;
                 generateButton.Enabled = false;
+            }
+
+            if (textBox2 != null && !ValidateSum(textBox, textBox2))
+            {
+                blockGenerateHashSet[(0, textBox)] = true;
+                generateButton.Enabled = false;
+            }
+            else if (textBox2 != null)
+            {
+                if (!blockGenerateHashSet.ContainsValue(true))
+                    generateButton.Enabled = true;
+            }
         }
 
         private void profileSourceComboBox_SelectedIndexChanged(object sender, EventArgs e)
