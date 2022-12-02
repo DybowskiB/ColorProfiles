@@ -1,0 +1,16 @@
+Color Profiles Manager 
+Bartosz Dybowski
+
+1) Menu:
+	- 'Load picture': załadowanie obrazu (profil: source profile)
+	- 'Generate': wygenerowanie obrazu docelowego (profil: target profile)
+	- 'Save' zapisanie obrazu docelowego
+	- 'Grey': konwersja do szarości obrazu docelowego(jeżeli brak to obrazu źródłowego)
+
+2) 'Source profile'/'Target profile':
+	
+	- ComboBox: wybór profilu(new - możliwość stworzenia własnego profilu)
+	- 'Gamma': współczynnik gamma używany do konwersji (RGB <=> R'G'B')
+	- 'White': (x, y) definują punkt bieli
+	- 'Red', 'Green', 'Blue': współrzędne trójchromatyczne luminoforów
+
