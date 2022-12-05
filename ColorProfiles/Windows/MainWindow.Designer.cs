@@ -753,6 +753,7 @@
             this.Name = "MainWindow";
             this.Text = "Color Profiles Manager";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Resize += new System.EventHandler(this.MainWindow_Resize);
             this.mainWindowTableLayoutPanel.ResumeLayout(false);
             this.mainWindowTableLayoutPanel.PerformLayout();
             this.menuPanel.ResumeLayout(false);

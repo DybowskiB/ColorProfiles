@@ -38,7 +38,8 @@ namespace ColorProfiles
             InitializeComponent();
 
             // Initialize picturebox with default picture
-            InitializePictureBox(defaultPicturePath, sourcePictureBox);
+            sourcePictureBox.Image = new Bitmap(Image.FromFile(defaultPicturePath),
+                        sourcePictureBox.Width, sourcePictureBox.Height);
 
             // Initialize Picture objects
             sourceColorProfile = new sRGB();
@@ -50,48 +51,6 @@ namespace ColorProfiles
 
             // Initialize set required to validation
             InitializeValidationSet();
-        }
-
-
-        // Resize pictureBox
-        private void InitializePictureBox(string path, PictureBox pictureBox)
-        {
-            Image myImage = Image.FromFile(path, true);
-            int width = 500;
-            double ratio = (double)myImage.Width / (double)myImage.Height;
-            int height = Convert.ToInt32(width / ratio);
-
-            if (height > width)
-            {
-                ratio = (double)myImage.Height / (double)myImage.Width;
-                height = width;
-                width = Convert.ToInt32(height / ratio);
-            }
-            pictureBox.Image = ResizeImage(myImage, width, height);
-        }
-
-        private Bitmap ResizeImage(Image image, int width, int height)
-        {
-            var destRect = new Rectangle(0, 0, width, height);
-            var destImage = new Bitmap(width, height);
-
-            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
-            using (var graphics = Graphics.FromImage(destImage))
-            {
-                graphics.CompositingMode = CompositingMode.SourceCopy;
-                graphics.CompositingQuality = CompositingQuality.HighQuality;
-                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                graphics.SmoothingMode = SmoothingMode.HighQuality;
-                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
-
-                using (var wrapMode = new ImageAttributes())
-                {
-                    wrapMode.SetWrapMode(WrapMode.TileFlipXY);
-                    graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel);
-                }
-            }
-
-            return destImage;
         }
 
         // Validation
@@ -546,6 +505,13 @@ namespace ColorProfiles
         private void TextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             changeProfileFlag = true;
+        }
+
+        private void MainWindow_Resize(object sender, EventArgs e)
+        {
+            sourcePictureBox.Image = new Bitmap(Image.FromFile(defaultPicturePath),
+                        sourcePictureBox.Width, sourcePictureBox.Height);
+            targetPictureBox.Size = sourcePictureBox.Size;
         }
     }
 }
