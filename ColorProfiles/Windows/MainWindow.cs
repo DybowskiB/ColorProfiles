@@ -228,7 +228,7 @@ namespace ColorProfiles
 
         private bool CheckIfNumber(TextBox textBox)
         {
-            Regex regex = new Regex("^[0-9][,]*[0-9]*$");
+            Regex regex = new Regex("^[0-9]+[,]*[0-9]*$");
             if (!regex.IsMatch(textBox.Text))
             {
                 errorProvider.SetError(textBox, "It has to be a number!");
