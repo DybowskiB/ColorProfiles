@@ -66,20 +66,8 @@ namespace ColorProfiles
                 Math.Pow((double) color.G / 255, 1 / sourceProfile.Gamma),
                 Math.Pow((double) color.B / 255, 1 / sourceProfile.Gamma) });
 
-            // Exclude special cases
-            Vector<double> XYZ;
-            if (RGB[0] == 1 && RGB[1] == 0 && RGB[2] == 0)
-                return Vector<double>.Build.Dense(new double[] { sourceProfile.Red.X, sourceProfile.Red.Y, sourceProfile.Red.Z });
-            else if (RGB[0] == 0 && RGB[1] == 1 && RGB[2] == 0)
-                return Vector<double>.Build.Dense(new double[] { sourceProfile.Green.X, sourceProfile.Green.Y, sourceProfile.Green.Z });
-            else if (RGB[0] == 0 && RGB[1] == 0 && RGB[2] == 1)
-                return Vector<double>.Build.Dense(new double[] { sourceProfile.Blue.X, sourceProfile.Blue.Y, sourceProfile.Blue.Z });
-            else if (RGB[0] == 1 && RGB[1] == 1 && RGB[0] == 1)
-                return Vector<double>.Build.Dense(new double[] { sourceProfile.White.X * (1 / sourceProfile.White.Y),
-                    1, sourceProfile.White.Z * (1 / sourceProfile.White.Y) });
-
             // Multiply matrix and vector
-            XYZ = toXYZMatrix * RGB;
+            Vector<double> XYZ = toXYZMatrix * RGB;
             return XYZ;
         }
 
