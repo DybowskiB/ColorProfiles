@@ -87,9 +87,11 @@ namespace ColorProfiles
                 Math.Pow((double) RGB[0], targetProfile.Gamma),
                 Math.Pow((double) RGB[1], targetProfile.Gamma),
                 Math.Pow((double) RGB[2], targetProfile.Gamma) });
-            int R = (int)(RGB[0] >= 0 ? Math.Min((long)(RGB[0] * 255), 255) : 0);
-            int G = (int)(RGB[1] >= 0 ? Math.Min((long)(RGB[1] * 255), 255) : 0);
-            int B = (int)(RGB[2] >= 0 ? Math.Min((long)(RGB[2] * 255), 255) : 0);
+
+            int R = (RGB[0] >= 0 && RGB[0] <= 1) ? (int)(RGB[0] * 255) : (RGB[0] > 1) ? 255 : 0;
+            int G = (RGB[1] >= 0 && RGB[1] <= 1) ? (int)(RGB[1] * 255) : (RGB[1] > 1) ? 255 : 0;
+            int B = (RGB[2] >= 0 && RGB[2] <= 1) ? (int)(RGB[2] * 255) : (RGB[2] > 1) ? 255 : 0;
+
             var color = Color.FromArgb(R, G, B);
 
             return color;
