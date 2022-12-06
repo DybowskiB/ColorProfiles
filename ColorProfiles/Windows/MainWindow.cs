@@ -430,6 +430,7 @@ namespace ColorProfiles
                     changeProfileFlag = false;
                 }
                 blockGenerateHashSet[(0, textBox)] = false;
+                blockGenerateHashSet[(0, textBox2)] = false;
                 if (!blockGenerateHashSet.ContainsValue(true))
                     generateButton.Enabled = true;
             }
