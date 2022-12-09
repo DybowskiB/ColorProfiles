@@ -80,6 +80,8 @@
             this.sourcePictureBox = new System.Windows.Forms.PictureBox();
             this.targetPictureBox = new System.Windows.Forms.PictureBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.generateHSVButton = new System.Windows.Forms.Button();
+            this.HSVTrackBar = new System.Windows.Forms.TrackBar();
             this.mainWindowTableLayoutPanel.SuspendLayout();
             this.menuPanel.SuspendLayout();
             this.menuTableLayoutPanel.SuspendLayout();
@@ -90,6 +92,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.sourcePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.targetPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HSVTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
             // mainWindowTableLayoutPanel
@@ -123,16 +126,20 @@
             // menuTableLayoutPanel
             // 
             this.menuTableLayoutPanel.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.menuTableLayoutPanel.ColumnCount = 5;
+            this.menuTableLayoutPanel.ColumnCount = 7;
             this.menuTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.menuTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6F));
             this.menuTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.menuTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.menuTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 76F));
+            this.menuTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6F));
+            this.menuTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6F));
+            this.menuTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64F));
             this.menuTableLayoutPanel.Controls.Add(this.generateButton, 1, 0);
             this.menuTableLayoutPanel.Controls.Add(this.saveButton, 2, 0);
             this.menuTableLayoutPanel.Controls.Add(this.grayButton, 3, 0);
             this.menuTableLayoutPanel.Controls.Add(this.loadPictureButton, 0, 0);
+            this.menuTableLayoutPanel.Controls.Add(this.generateHSVButton, 4, 0);
+            this.menuTableLayoutPanel.Controls.Add(this.HSVTrackBar, 5, 0);
             this.menuTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.menuTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.menuTableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
@@ -742,6 +749,29 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // generateHSVButton
+            // 
+            this.generateHSVButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.generateHSVButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.generateHSVButton.Location = new System.Drawing.Point(191, 3);
+            this.generateHSVButton.Name = "generateHSVButton";
+            this.generateHSVButton.Size = new System.Drawing.Size(41, 6);
+            this.generateHSVButton.TabIndex = 23;
+            this.generateHSVButton.Text = "generate HSV";
+            this.generateHSVButton.UseVisualStyleBackColor = true;
+            this.generateHSVButton.Click += new System.EventHandler(this.generateHSVButton_Click);
+            // 
+            // HSVTrackBar
+            // 
+            this.HSVTrackBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.HSVTrackBar.Location = new System.Drawing.Point(238, 3);
+            this.HSVTrackBar.Maximum = 100;
+            this.HSVTrackBar.Name = "HSVTrackBar";
+            this.HSVTrackBar.Size = new System.Drawing.Size(41, 6);
+            this.HSVTrackBar.TabIndex = 24;
+            this.HSVTrackBar.Value = 100;
+            this.HSVTrackBar.Scroll += new System.EventHandler(this.HSVTrackBar_Scroll);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -758,6 +788,7 @@
             this.mainWindowTableLayoutPanel.PerformLayout();
             this.menuPanel.ResumeLayout(false);
             this.menuTableLayoutPanel.ResumeLayout(false);
+            this.menuTableLayoutPanel.PerformLayout();
             this.profilesPanel.ResumeLayout(false);
             this.profileTableLayoutPanel.ResumeLayout(false);
             this.profileTableLayoutPanel.PerformLayout();
@@ -766,6 +797,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.sourcePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.targetPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HSVTrackBar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -822,6 +854,8 @@
         private System.Windows.Forms.PictureBox targetPictureBox;
         private System.Windows.Forms.Button loadPictureButton;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.Button generateHSVButton;
+        private System.Windows.Forms.TrackBar HSVTrackBar;
     }
 }
 

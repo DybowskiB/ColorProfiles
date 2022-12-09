@@ -514,5 +514,98 @@ namespace ColorProfiles
                         sourcePictureBox.Width, sourcePictureBox.Height);
             targetPictureBox.Size = sourcePictureBox.Size;
         }
+
+        private void generateHSVButton_Click(object sender, EventArgs e)
+        {
+            drawHSV();
+
+        }
+
+        private double CalculeAngle((double X, double Y) start, (double X, double Y) arrival)
+        {
+            var radian = Math.Atan2((arrival.Y - start.Y), (arrival.X - start.X));
+            var angle = (radian * (180 / Math.PI) + 360) % 360;
+
+            return angle;
+        }
+
+        private double fmod(double x, double a)
+        {
+            double xx = Math.Abs(x);
+            double result = xx % a;
+            if (x < 0)
+                return -1 * result;
+            return result;
+        }
+
+        private void HSVTrackBar_Scroll(object sender, EventArgs e)
+        {
+            drawHSV();
+        }
+
+        private void drawHSV()
+        {
+            Bitmap bitmap = new Bitmap(sourcePictureBox.Width, sourcePictureBox.Height);
+
+            using (Graphics gfx = Graphics.FromImage(bitmap))
+            {
+                using (SolidBrush brush = new SolidBrush(Color.White))
+                {
+                    gfx.FillRectangle(brush, 0, 0, bitmap.Width, bitmap.Height);
+                }
+            }
+
+            (double x, double y) center = (bitmap.Width / 2, bitmap.Height / 2);
+
+            for (int x = 0; x < bitmap.Width; x++)
+            {
+                for (int y = 0; y < bitmap.Height; y++)
+                {
+                    double S = Math.Sqrt(Math.Pow(x - center.x, 2) + Math.Pow(y - center.y, 2));
+                    if (S > 100) continue;
+
+                    double H = CalculeAngle(center, (x, y));
+                    double V = HSVTrackBar.Value;
+
+                    double s = S / 100;
+                    double v = V / 100;
+                    double C = s * v;
+                    double X = C * (1 - Math.Abs(fmod(H / 60.0, 2) - 1));
+                    double m = v - C;
+                    double r, g, b;
+                    if (H >= 0 && H < 60)
+                    {
+                        (r, g, b) = (C, X, 0);
+                    }
+                    else if (H >= 60 && H < 120)
+                    {
+                        (r, g, b) = (X, C, 0);
+                    }
+                    else if (H >= 120 && H < 180)
+                    {
+                        (r, g, b) = (0, C, X);
+                    }
+                    else if (H >= 180 && H < 240)
+                    {
+                        (r, g, b) = (0, X, C);
+                    }
+                    else if (H >= 240 && H < 300)
+                    {
+                        (r, g, b) = (X, 0, C);
+                    }
+                    else
+                    {
+                        (r, g, b) = (C, 0, X);
+                    }
+                    int R = (int)((r + m) * 255);
+                    int G = (int)((g + m) * 255);
+                    int B = (int)((b + m) * 255);
+
+                    bitmap.SetPixel(x, y, Color.FromArgb((int)R, (int)G, (int)B));
+                }
+            }
+
+            sourcePictureBox.Image = bitmap;
+        }
     }
 }
